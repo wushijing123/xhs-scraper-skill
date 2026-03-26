@@ -71,7 +71,7 @@
 ### 第一步 — 安装 Skill
 
 ```bash
-npx xhs-scraper-skill
+npx bubu-xhs-scraper-skill
 ```
 
 安装完成后，skill 文件会复制到 `~/.claude/skills/xhs-scraper/`。

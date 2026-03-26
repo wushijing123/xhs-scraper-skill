@@ -1,10 +1,10 @@
 {
-  "name": "xhs-scraper-skill",
-  "version": "1.0.0",
-  "description": "Claude Code skill for scraping Xiaohongshu (XHS) data via TikHub API",
+  "name": "bubu-xhs-scraper-skill",
+  "version": "1.1.0",
+  "description": "Multi-platform social media scraper skill for Claude Code & Openclaw, powered by TikHub API. Supports XHS, Douyin, TikTok, Bilibili, Weibo, YouTube, WeChat, Twitter/X.",
   "type": "module",
   "bin": {
-    "xhs-scraper-skill": "./bin/install.mjs"
+    "bubu-xhs-scraper-skill": "./bin/install.mjs"
   },
   "files": [
     "bin/",
@@ -18,7 +18,14 @@
     "xiaohongshu",
     "xhs",
     "scraper",
-    "tikhub"
+    "tikhub",
+    "douyin",
+    "tiktok",
+    "bilibili",
+    "weibo",
+    "youtube",
+    "wechat",
+    "twitter"
   ],
   "author": "wushijing123",
   "repository": {

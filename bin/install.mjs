@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * xhs-scraper-skill installer
+ * bubu-xhs-scraper-skill installer
  * Installs the XHS Scraper skill to ~/.claude/skills/
  *
  * Usage:
- *   npx xhs-scraper-skill
- *   npx xhs-scraper-skill install
+ *   npx bubu-xhs-scraper-skill
+ *   npx bubu-xhs-scraper-skill install
  */
 
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'fs';
@@ -17,7 +17,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const SKILL_NAME = 'xhs-scraper';
+const SKILL_NAME = 'bubu-bubu-xhs-scraper-skill';
 const SKILLS_DIR = join(homedir(), '.claude', 'skills');
 const TARGET_DIR = join(SKILLS_DIR, SKILL_NAME);
 const SKILL_FILE = join(__dirname, '..', 'skills', SKILL_NAME, 'SKILL.md');
@@ -25,7 +25,7 @@ const SKILL_FILE = join(__dirname, '..', 'skills', SKILL_NAME, 'SKILL.md');
 function printBanner() {
   console.log('\x1b[36m');
   console.log('╔══════════════════════════════════╗');
-  console.log('║     XHS Scraper Skill v1.0.0     ║');
+  console.log('║     bubu-xhs-scraper-skill v1.1.0     ║');
   console.log('║   Claude Code Skill Installer    ║');
   console.log('╚══════════════════════════════════╝');
   console.log('\x1b[0m');
@@ -69,7 +69,7 @@ const args = process.argv.slice(2);
 const cmd = args[0];
 
 if (cmd === '--help' || cmd === '-h') {
-  console.log('Usage: npx xhs-scraper-skill [install]');
+  console.log('Usage: npx bubu-xhs-scraper-skill [install]');
   console.log('Installs the XHS Scraper skill for Claude Code.');
 } else {
   // Default action is install

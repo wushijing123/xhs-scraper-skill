@@ -66,7 +66,7 @@ Talk to Claude in plain language — no commands, no code. Claude will automatic
 ### 1. Install the skill
 
 ```bash
-npx xhs-scraper-skill
+npx bubu-xhs-scraper-skill
 ```
 
 This copies the skill into `~/.claude/skills/xhs-scraper/`.

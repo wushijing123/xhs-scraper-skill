@@ -1,5 +1,5 @@
 ---
-name: xhs-scraper
+name: bubu-xhs-scraper-skill
 description: 多平台社交媒体数据抓取工具，基于 TikHub API。支持小红书、抖音、TikTok、Bilibili、微博、YouTube、微信公众号、视频号、Twitter/X。触发词：「小红书」「抖音」「TikTok」「B站」「bilibili」「微博」「YouTube」「公众号」「视频号」「Twitter」「X平台」「抓取数据」「获取用户」「搜索」「评论」「笔记」「视频」。只要用户提到这些平台 + 数据需求，立即触发此 skill。
 version: 1.1.0
 metadata:
