@@ -249,5 +249,5 @@ print("已保存到 xhs_notes.xlsx")
 - **Base URL**: `https://api.tikhub.io`
 - **鉴权**: `Authorization: Bearer {TIKHUB_API_KEY}`
 - **文档**: `https://api.tikhub.io`（Swagger UI）
-- **定价**: 约 ¥0.07/次（具体见 TikHub 控制台）
+- **定价**: $0.001/次，详细定价见 [TikHub Pricing](https://user.tikhub.io/dashboard/pricing)
 - **响应缓存**: 成功请求会缓存 24 小时，重复请求不额外计费

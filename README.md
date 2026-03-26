@@ -156,9 +156,10 @@ The `get_note_info` response includes:
 
 ## Pricing
 
-- ~**¥0.07 per API call**
+- ~**$0.001 per API call**
 - Successful responses are **cached for 24 hours** — repeating the same request within 24h is free
-- Register at [user.tikhub.io](https://user.tikhub.io) to top up
+- Full pricing breakdown: [user.tikhub.io/dashboard/pricing](https://user.tikhub.io/dashboard/pricing)
+- Register and top up at [user.tikhub.io](https://user.tikhub.io)
 
 ---
 
