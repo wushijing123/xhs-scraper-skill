@@ -1,5 +1,7 @@
 # xhs-scraper-skill
 
+[**English**](./README.en.md)
+
 > 基于 [TikHub API](https://tikhub.io) 的小红书数据抓取工具，适用于 [Claude Code](https://claude.ai/claude-code) 和 **Openclaw**。
 
 ---
