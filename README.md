@@ -1,47 +1,64 @@
 # xhs-scraper-skill
 
 > A [Claude Code](https://claude.ai/claude-code) skill for scraping Xiaohongshu (小红书 / RedNote) data via [TikHub API](https://tikhub.io).
+> Compatible with **Claude Code** and **Openclaw**.
 
 ---
 
-## Features
+## What it does
 
-- 🔍 Search users by keyword
-- 👤 Get user profile (followers, notes count, bio)
-- 📝 Fetch all notes from a user (auto-pagination)
-- 📄 Get note detail (title, description, author, topics, stats, cover image)
-- 💬 Get note comments
-- 🏷️ Get notes by topic
-- 📊 Export to Excel / JSON
-- 💰 ~¥0.07 per API call (24h response cache — repeated requests are free)
+Talk to Claude in plain language — no commands, no code. Claude will automatically pick the right API, extract IDs from URLs, paginate results, and export data.
+
+```
+帮我抓取这条小红书笔记的数据：https://www.xiaohongshu.com/explore/68304ca2...
+
+抓取用户「美食探店小王」的所有笔记，导出成 Excel
+
+搜索小红书上关于「护肤」的用户，列出粉丝数排名
+
+获取这个笔记的所有评论
+```
+
+**Supports:**
+- Search users by keyword
+- Get user profile (followers, notes count, bio)
+- Fetch all notes from a user (auto-pagination)
+- Get note detail — title, description, stats, cover image, topics
+- Get note comments
+- Get notes by topic / home feed
+- Export to Excel / JSON
 
 ---
 
-## Requirements
+## Quick Start
 
-- [Claude Code](https://claude.ai/claude-code)
-- Node.js ≥ 18
-- Python 3 + `httpx`
-- TikHub API key ([register here](https://user.tikhub.io))
+### 1. Install the skill
 
----
+**Via Openclaw:**
+```bash
+npx @skillmaster/skills@latest install
+# then search for "xhs-scraper" in the list
+```
 
-## Installation
-
-### Step 1 — Install the skill
-
+**Direct install:**
 ```bash
 npx xhs-scraper-skill
 ```
 
 This copies the skill into `~/.claude/skills/xhs-scraper/`.
 
-### Step 2 — Get a TikHub API key
+---
+
+### 2. Get a TikHub API key
 
 1. Register at [user.tikhub.io](https://user.tikhub.io)
 2. Copy your API key from the dashboard
 
-### Step 3 — Add your API key to Claude Code
+> TikHub provides the underlying Xiaohongshu data API. Pricing: ~**$0.001 per call**, with 24h response caching (repeated identical requests are free). See [full pricing](https://user.tikhub.io/dashboard/pricing).
+
+---
+
+### 3. Add the API key to Claude Code
 
 Edit `~/.claude/settings.json`:
 
@@ -53,34 +70,34 @@ Edit `~/.claude/settings.json`:
 }
 ```
 
-### Step 4 — Install Python dependency
+---
+
+### 4. Install Python dependency
 
 ```bash
 pip3 install httpx
 ```
 
-### Step 5 — Restart Claude Code
+---
 
-The skill activates automatically after restart.
+### 5. Restart Claude Code
+
+The skill activates automatically. Try asking:
+
+```
+帮我抓取这条小红书笔记的数据：https://www.xiaohongshu.com/explore/68304ca2...
+```
 
 ---
 
-## Usage
+## Requirements
 
-Just describe what you want in natural language — no commands needed:
-
-```
-帮我抓取这条小红书笔记的数据：
-https://www.xiaohongshu.com/explore/68304ca20000000023014b19
-
-抓取用户 65f7fc87000000000b00e75f 的所有笔记，导出成 Excel
-
-搜索小红书上关于「护肤」的用户
-
-获取这个笔记的评论
-```
-
-Claude will automatically detect the intent and call the right API.
+| Requirement | Details |
+|-------------|---------|
+| Claude Code | [claude.ai/claude-code](https://claude.ai/claude-code) |
+| Node.js | ≥ 18 (for installer) |
+| Python 3 + `httpx` | `pip3 install httpx` |
+| TikHub API key | [user.tikhub.io](https://user.tikhub.io) |
 
 ---
 
@@ -89,13 +106,11 @@ Claude will automatically detect the intent and call the right API.
 | Feature | Endpoint |
 |---------|----------|
 | Search users | `GET /api/v1/xiaohongshu/web/search_users` |
-| Get user info (Web) | `GET /api/v1/xiaohongshu/web/get_user_info` |
-| Get user info (App) | `GET /api/v1/xiaohongshu/app/get_user_info` |
-| Get user notes (Web) | `GET /api/v1/xiaohongshu/web/get_user_notes_v2` |
-| Get user notes (App) | `GET /api/v1/xiaohongshu/app/get_user_notes` |
+| Get user info | `GET /api/v1/xiaohongshu/app/get_user_info` |
+| Get user notes | `GET /api/v1/xiaohongshu/app/get_user_notes` |
 | Get note detail | `GET /api/v1/xiaohongshu/app/get_note_info` |
 | Get note comments | `GET /api/v1/xiaohongshu/app/get_note_comments` |
-| Get topic notes | `GET /api/v1/xiaohongshu/app/get_notes_by_topic` |
+| Get notes by topic | `GET /api/v1/xiaohongshu/app/get_notes_by_topic` |
 | Home feed | `GET /api/v1/xiaohongshu/web/get_home_recommend` |
 
 ---
@@ -106,21 +121,19 @@ Claude will automatically detect the intent and call the right API.
 ```
 https://www.xiaohongshu.com/user/profile/5c1b1234...
                                           ^^^^^^^^^^^
-                                          this is the user_id
 ```
 
 **Note ID** — from note URL:
 ```
 https://www.xiaohongshu.com/explore/68304ca200000000...
                                     ^^^^^^^^^^^^^^^^
-                                    this is the note_id
 ```
+
+> You don't need to extract IDs manually — just paste the full URL and Claude will handle it.
 
 ---
 
-## Note Detail Response
-
-The `get_note_info` response includes:
+## Note Detail Fields
 
 | Field | Description |
 |-------|-------------|
@@ -132,34 +145,25 @@ The `get_note_info` response includes:
 | `comments_count` | Comment count |
 | `shared_count` | Share count |
 | `view_count` | View count |
-| `topics` | Topic tags (each has `name`) |
+| `topics` | Topic tags |
 | `time` | Publish timestamp (seconds) |
 | `ip_location` | Author's IP location |
 | `images_list` | Image URLs (multiple resolutions) |
 | `video` | Video info (for video notes) |
 
-> ⚠️ `interact_info` in the response is always empty — use the top-level fields (`liked_count`, `collected_count`, etc.) instead.
+> ⚠️ `interact_info` in the raw response is always empty — the skill reads the correct top-level fields (`liked_count`, etc.) instead.
 
 ---
 
-## Common Issues
+## Troubleshooting
 
-| Error | Cause | Fix |
-|-------|-------|-----|
-| `400` | Endpoint needs XHS cookies, or note is deleted | Try passing `share_text` instead of `note_id`; check if the note still exists |
-| `401` | API key not set | Verify `TIKHUB_API_KEY` in `~/.claude/settings.json` |
-| `429` | Rate limited | Add `asyncio.sleep(0.5~1)` between requests; do not retry immediately |
-| Timeout | Network / proxy issue | Check if your VPN or proxy is interfering with `api.tikhub.io` |
-| Cover URL expired | CDN URLs have time-limited signatures | Download cover images immediately, don't store the URL for later |
-
----
-
-## Pricing
-
-- ~**$0.001 per API call**
-- Successful responses are **cached for 24 hours** — repeating the same request within 24h is free
-- Full pricing breakdown: [user.tikhub.io/dashboard/pricing](https://user.tikhub.io/dashboard/pricing)
-- Register and top up at [user.tikhub.io](https://user.tikhub.io)
+| Error | Likely Cause | Fix |
+|-------|-------------|-----|
+| `400` | Note deleted, or needs `share_text` | Paste the full share URL instead of just the note ID |
+| `401` | API key missing | Check `TIKHUB_API_KEY` in `~/.claude/settings.json` |
+| `429` | Rate limited | The skill adds delays automatically; wait a moment and retry |
+| Timeout | VPN / proxy conflict | Try toggling your VPN — `api.tikhub.io` may need direct access |
+| Cover URL broken | CDN URLs expire | Download cover images right away, don't save URLs for later use |
 
 ---
 
