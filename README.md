@@ -162,6 +162,22 @@ https://www.xiaohongshu.com/explore/68304ca200000000...
 
 ---
 
+## Why I Built This
+
+I got my Xiaohongshu account restricted — and this is why.
+
+![XHS violation notice](./xhs-violation-notice.png)
+
+> **Violation notice (translated):** *"Your account has repeatedly used AI automation for posting/interactions. We will restrict your account functions. The platform does not support any third-party tools, software, or mini programs for auto-publishing content or inflating data. Repeated violations may result in a permanent ban."*
+
+Previously, I was scraping Xiaohongshu data using tools that required **logging in with my account** — including Playwright-based scrapers, Openclaw monitoring workflows, and `xiaohongshu-cli` type tools. All of them triggered XHS's upgraded AI automation detection. The problem is clear: **any tool that logs in with your account will be flagged**, regardless of what it's actually doing.
+
+**This skill takes a different approach.** It uses TikHub's API — a third-party data service that accesses public Xiaohongshu data through its own infrastructure. You never log in to XHS, never run a browser, and never touch your account's session. Your account stays safe.
+
+> Use this skill for reading and analyzing **public** Xiaohongshu data only — not for automating interactions (posting, liking, commenting) on your account.
+
+---
+
 ## License
 
 MIT
