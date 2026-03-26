@@ -17,7 +17,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const SKILL_NAME = 'bubu-bubu-xhs-scraper-skill';
+const SKILL_NAME = 'bubu-xhs-scraper-skill';
 const SKILLS_DIR = join(homedir(), '.claude', 'skills');
 const TARGET_DIR = join(SKILLS_DIR, SKILL_NAME);
 const SKILL_FILE = join(__dirname, '..', 'skills', SKILL_NAME, 'SKILL.md');

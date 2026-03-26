@@ -69,7 +69,7 @@ Talk to Claude in plain language — no commands, no code. Claude will automatic
 npx bubu-xhs-scraper-skill
 ```
 
-This copies the skill into `~/.claude/skills/xhs-scraper/`.
+This copies the skill into `~/.claude/skills/bubu-xhs-scraper-skill/`.
 
 ---
 
