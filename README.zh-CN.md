@@ -33,13 +33,6 @@
 
 ### 第一步 — 安装 Skill
 
-**通过 Openclaw 安装：**
-```bash
-npx @skillmaster/skills@latest install
-# 在列表中找到 xhs-scraper 并安装
-```
-
-**直接安装：**
 ```bash
 npx xhs-scraper-skill
 ```

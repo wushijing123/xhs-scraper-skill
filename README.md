@@ -36,13 +36,6 @@ Talk to Claude in plain language — no commands, no code. Claude will automatic
 
 ### 1. Install the skill
 
-**Via Openclaw:**
-```bash
-npx @skillmaster/skills@latest install
-# then search for "xhs-scraper" in the list
-```
-
-**Direct install:**
 ```bash
 npx xhs-scraper-skill
 ```
